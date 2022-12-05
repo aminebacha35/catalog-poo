@@ -142,6 +142,9 @@
                 <a class="best" href="/series?order_by=averageRating&order=desc">
                     Best rated series
                 </a>
+                <a class="random" href="/series/random">
+                    Random series
+                </a>
             </div>
 
             <div class="wrapper">
