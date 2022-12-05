@@ -6,6 +6,7 @@ use App\Http\Controllers\SeriesController;
 use App\Models\Movie;
 use App\Models\Series;
 use Illuminate\Support\Facades\Route;
+use App\Models\Genre;
 
 /*
 |--------------------------------------------------------------------------

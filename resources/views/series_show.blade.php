@@ -67,6 +67,27 @@
 
     }
 
+    .epi{
+        margin-bottom: 5vh;
+    }
+    .epi h2{
+        margin-top: 10vh;
+        margin-bottom :7vh;
+        text-align: center;
+        font-size: 3.5vw;
+
+    }
+.epii{
+    margin-left: 8vw;
+    display: flex;
+    flex-direction: row;
+}
+.epiis{
+    display: flex;
+    flex-direction: column;
+}
+
+
     </style>
 </head>
 <body>
@@ -113,6 +134,31 @@
             {{ $series_item->plot }}
         </p>
         </div>
+
+
+
+    <div class="epi">
+        <h2>Episodes</h2>
+      
+            @foreach ($series_item->seasons() as $seasonNumber => $episodes)
+            <div class="epii">
+            
+            <h3>Season {{ $seasonNumber }}</h3>
+            <div class="epiis">
+                @foreach ($episodes->sortBy('episodeNumber') as $episodeNumber => $episode)
+                   <p>{{ $episodeNumber }}</p>
+                    <img src="{{ $episode->poster }}" alt="{{ $episode->originalTitle }}" style="width: 2rem">
+                  <p>{{ $episode->originalTitle }}</p> 
+                  
+
+                @endforeach
+                </div>
+            @endforeach
+           
+        </div>
+
+
+
     </div>
 </body>
 </html>
