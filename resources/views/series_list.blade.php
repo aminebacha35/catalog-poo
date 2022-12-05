@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.cdnfonts.com/css/poppins" rel="stylesheet">
-
-    <title>Movies</title>
+    <title>Series</title>
 
     <style>
-           * {
+            * {
             margin: 0;
             background-color: white;
             text-align: center;
@@ -109,48 +107,46 @@
     <div class="container">
     <a href="/"><h1>{{ config('app.name') }}</h1></a>
 
-
         <div class="gender" style="margin-bottom: 2rem;">
             <strong>Genres: </strong>
             @foreach ($genres as $genre)
-            <a href="/movies?genre={{ $genre->label }}">{{ $genre->label }}</a>
+            <a href="/series?genre={{ $genre->label }}">{{ $genre->label }}</a>
             {{ $loop->last ? "" : "," }}
             @endforeach
         </div>
+
         <div class="list">
-                <a class="show" href="/movies">
-                    Show all movies
+                <a class="show" href="/series">
+                    Show all series
                 </a>
-                <a class="new" href="/movies?order_by=startYear&order=asc">
-                    Newest movies
+                <a class="new" href="/series?order_by=startYear&order=asc">
+                    Newest series
                 </a>
-                <a class="best" href="/movies?order_by=averageRating&order=desc">
-                    Best rated movies
-                </a>
-                <a class="random" href="/movies/random">
-                    Random movie
+                <a class="best" href="/series?order_by=averageRating&order=desc">
+                    Best rated series
                 </a>
             </div>
+
         <div class="all">
             <table>
-                @foreach ($movies_paginator as $movie)
+                @foreach ($series_paginator as $series_item)
                 <tr>
                     <td>
-                        <img class="list_image" src="{{ $movie->poster }}" alt="{{ $movie->primaryTitle }}">
+                        <img class="list_image" src="{{ $series_item->poster }}" alt="{{ $series_item->primaryTitle }}">
                     </td>
                     <td>
-                        <a style="text-decoration: none" href="/movies/{{ $movie->id }}">
-                            {{ $movie->originalTitle }}
+                        <a style="text-decoration: none" href="/series/{{ $series_item->id }}">
+                            {{ $series_item->originalTitle }}
                         </a>
                     </td>
-                    <td>{{ $movie->averageRating }}/10</td>
+                    <td>{{ $series_item->averageRating }}/10</td>
                 </tr>
                 @endforeach
             </table>
         </div>
 
         <div class="link">
-            {{ $movies_paginator->links('paginator') }}
+            {{ $series_paginator->links('paginator') }}
         </div>
     </div>
 </body>
